@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر العتيق | موبايلات، سماعات، وإكسسوارات أصلية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .hero-text-stroke {
+            text-shadow: 0 3px 8px rgba(0,0,0,0.22);
+        }
+        @keyframes pulseSlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.55; }
+        }
+        .ai-loading-badge {
+            animation: pulseSlow 1.8s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-white">
+
+    <!-- ==================== TOP BLACK CATEGORY BAR (Exact match to 6.jpg) ==================== -->
+    <div class="bg-[#0b0b0b] text-white text-xs sm:text-sm py-2.5 px-4 border-b border-neutral-800 sticky top-0 z-50">
+        <div class="max-w-[1400px] mx-auto flex items-center justify-between gap-4 overflow-x-auto no-scrollbar whitespace-nowrap">
+            <div class="flex items-center gap-5 font-semibold">
+                <button onclick="showHomeView(); filterByCategory('all')" class="flex items-center gap-2 text-white hover:text-[#f06424] transition">
+                    <i class="fa-solid fa-bars text-base"></i>
+                    <span>كل الفئات</span>
+                </button>
+                <span class="text-neutral-600">•</span>
+                <button onclick="showHomeView(); filterByCategory('phones')" class="hover:text-[#f06424] transition">موبايلات وتابلت والإكسسوارات</button>
+                <span class="text-neutral-600">•</span>
+                <button onclick="showHomeView(); filterByCategory('headphones')" class="hover:text-[#f06424] transition">سماعات رأس واحترافية</button>
+                <span class="text-neutral-600">•</span>
+                <button onclick="showHomeView(); filterByCategory('earbuds')" class="hover:text-[#f06424] transition">أيربودز وسماعات بلوتوث</button>
+                <span class="text-neutral-600">•</span>
+                <button onclick="showHomeView(); filterByCategory('chargers')" class="hover:text-[#f06424] transition">شواحن وباور بانك وكابلات</button>
+                <span class="text-neutral-600">•</span>
+                <button onclick="showHomeView(); filterByCategory('cases')" class="hover:text-[#f06424] transition">جرابات واسكرينات حماية</button>
+                <span class="text-neutral-600">•</span>
+                <button onclick="showHomeView(); filterByCategory('watches')" class="hover:text-[#f06424] transition">ساعات ذكية</button>
+                <span class="text-neutral-600">•</span>
+                <button onclick="showHomeView(); filterByCategory('speakers')" class="hover:text-[#f06424] transition">مكبرات صوت ولابتوب</button>
+            </div>
+            <div class="hidden lg:flex items-center gap-3 text-xs text-neutral-300">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-phone-volume text-[#f06424]"></i> الخط الساخن: 19966</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN BRAND HEADER (Al-Ateeq Search, Wishlist & Cart) ==================== -->
+    <header class="bg-white border-b border-gray-200 py-3.5 px-4 sticky top-[41px] z-40 shadow-sm">
+        <div class="max-w-[1400px] mx-auto flex flex-wrap items-center justify-between gap-4">
+            <!-- Brand Logo -->
+            <div onclick="showHomeView(); filterByCategory('all')" class="flex items-center gap-3 cursor-pointer">
+                <div class="w-11 h-11 rounded-xl bg-[#f06424] text-white flex items-center justify-center font-black text-2xl shadow-sm">
+                    ع
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl font-black tracking-tight text-neutral-900">العتيق</span>
+                        <span class="text-[11px] bg-orange-100 text-[#f06424] font-bold px-2 py-0.5 rounded-md">AL-ATEEQ</span>
+                    </div>
+                    <p class="text-[11px] text-neutral-500 font-medium">سماعات • موبايلات • إكسسوارات أصلية</p>
+                </div>
+            </div>
+
+            <!-- Search Input -->
+            <div class="flex-1 max-w-2xl min-w-[240px] order-3 md:order-2 w-full md:w-auto">
+                <div class="relative flex items-center">
+                    <input id="searchInput" oninput="handleSearch(this.value)" type="text" placeholder="ابحث في العتيق عن موبايل، سماعة، أيربودز، شاحن، أو جراب..." class="w-full bg-[#f5f5f5] hover:bg-[#efefef] focus:bg-white text-sm text-neutral-800 rounded-xl py-2.5 pr-4 pl-12 border border-gray-200 focus:border-[#f06424] focus:outline-none transition">
+                    <button class="absolute left-2 w-8 h-8 rounded-lg bg-[#f06424] text-white flex items-center justify-center hover:bg-[#d95316] transition">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Header Actions: Wishlist & Cart -->
+            <div class="flex items-center gap-3 order-2 md:order-3">
+                <button onclick="toggleWishlistFilter()" class="relative flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 hover:border-[#f06424] text-neutral-700 hover:text-[#f06424] transition text-xs font-bold">
+                    <i class="fa-regular fa-heart text-base text-[#f06424]"></i>
+                    <span class="hidden sm:inline">المفضلة</span>
+                    <span id="wishlistCountBadge" class="w-5 h-5 rounded-full bg-orange-100 text-[#f06424] text-[11px] flex items-center justify-center font-extrabold">0</span>
+                </button>
+
+                <button onclick="toggleCartDrawer(true)" class="relative flex items-center gap-2.5 px-4 py-2 rounded-xl bg-[#1a1a1a] hover:bg-[#f06424] text-white transition text-xs font-bold shadow-sm">
+                    <i class="fa-solid fa-bag-shopping text-base"></i>
+                    <span>سلة التسوق</span>
+                    <span id="cartCountBadge" class="w-5 h-5 rounded-full bg-[#f06424] text-white text-[11px] flex items-center justify-center font-extrabold border border-white">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN STORE HOME VIEW ==================== -->
+    <main id="homeView" class="flex-1">
+
+        <!-- 1. HERO BANNER + BENEFITS BAR + ICON SLIDER (Exact match to image1.jpg) -->
+        <section class="w-full">
+            <!-- Hero Slider Container -->
+            <div id="heroBannerContainer" class="relative w-full bg-gradient-to-b from-[#d8d5d0] via-[#e9e4df] to-[#f3ede8] overflow-hidden min-h-[280px] sm:min-h-[340px] flex items-center border-b border-gray-200">
+                <!-- Background Photo Layer -->
+                <img id="heroAiBgImage" src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1600&q=80" alt="بانر متجر العتيق" class="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none">
+
+                <!-- Floating Product Photos on Hero Edges -->
+                <img id="heroFloatingRightImg" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=85" alt="سماعات العتيق" class="hidden xl:block absolute right-8 bottom-6 w-36 h-36 object-cover rounded-2xl shadow-lg border-2 border-white transform -rotate-6 z-10 bg-white">
+                <img id="heroFloatingLeftImg" src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=85" alt="موبايلات العتيق" class="hidden xl:block absolute left-8 bottom-6 w-36 h-36 object-cover rounded-2xl shadow-lg border-2 border-white transform rotate-6 z-10 bg-white">
+
+                <!-- Slider Left/Right Arrows -->
+                <button onclick="switchHeroSlide(-1)" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/70 hover:bg-white text-neutral-800 flex items-center justify-center shadow transition">
+                    <i class="fa-solid fa-chevron-right text-sm"></i>
+                </button>
+                <button onclick="switchHeroSlide(1)" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/70 hover:bg-white text-neutral-800 flex items-center justify-center shadow transition">
+                    <i class="fa-solid fa-chevron-left text-sm"></i>
+                </button>
+
+                <!-- Hero Center Content (Exact match to image1.jpg) -->
+                <div class="max-w-[1150px] mx-auto w-full px-8 py-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <!-- Right side in RTL: "بسعر الكاش قسط على 12 شهر" + Black CTA button -->
+                    <div class="text-center md:text-right flex flex-col items-center md:items-end md:w-1/2">
+                        <div class="inline-block mb-1">
+                            <span id="heroTopBadgeText" class="text-3xl sm:text-5xl font-black text-[#f06424] tracking-tight drop-shadow-sm" style="-webkit-text-stroke: 1.5px #ffffff;">بسعر الكاش</span>
+                        </div>
+                        <h1 id="heroMainHeading" class="text-3xl sm:text-5xl font-black text-[#141414] hero-text-stroke mb-5 leading-tight">
+                            قسط على 12 شهر
+                        </h1>
+                        <button onclick="document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})" class="bg-[#0a0a0a] hover:bg-[#f06424] text-white font-bold text-base sm:text-lg px-9 py-2.5 rounded-md shadow-md transition">
+                            تسوق الآن
+                        </button>
+                        <span class="text-[11px] text-neutral-700 font-bold mt-1.5">*تطبق الشروط والأحكام</span>
+                    </div>
+
+                    <!-- Left side in RTL: 0% | 0% | 0% Badges + valU | U | TRU pill -->
+                    <div class="flex flex-col items-center md:w-1/2">
+                        <div class="flex items-center justify-center gap-4 sm:gap-7 mb-4">
+                            <!-- 0% مصاريف شراء -->
+                            <div class="flex flex-col items-center">
+                                <div class="text-5xl sm:text-7xl font-black text-[#f06424] leading-none flex items-baseline" style="-webkit-text-stroke: 2px #fff;">
+                                    <span>0</span><span class="text-2xl sm:text-3xl font-extrabold">%</span>
+                                </div>
+                                <span class="text-xs sm:text-base font-extrabold text-neutral-800 mt-1">مصاريف شراء</span>
+                            </div>
+
+                            <div class="h-16 w-[2px] bg-neutral-400/70"></div>
+
+                            <!-- 0% مقدم -->
+                            <div class="flex flex-col items-center">
+                                <div class="text-5xl sm:text-7xl font-black text-[#f06424] leading-none flex items-baseline" style="-webkit-text-stroke: 2px #fff;">
+                                    <span>0</span><span class="text-2xl sm:text-3xl font-extrabold">%</span>
+                                </div>
+                                <span class="text-xs sm:text-base font-extrabold text-neutral-800 mt-1">مقدم</span>
+                            </div>
+
+                            <div class="h-16 w-[2px] bg-neutral-400/70"></div>
+
+                            <!-- 0% فوائد -->
+                            <div class="flex flex-col items-center">
+                                <div class="text-5xl sm:text-7xl font-black text-[#f06424] leading-none flex items-baseline" style="-webkit-text-stroke: 2px #fff;">
+                                    <span>0</span><span class="text-2xl sm:text-3xl font-extrabold">%</span>
+                                </div>
+                                <span class="text-xs sm:text-base font-extrabold text-neutral-800 mt-1">فوائد</span>
+                            </div>
+                        </div>
+
+                        <!-- valU | U | TRU white rounded bar -->
+                        <div class="bg-white/95 px-6 py-2 rounded-full shadow-md border border-gray-200 flex items-center gap-4 text-lg sm:text-2xl font-black">
+                            <span class="text-[#1d2f6f] tracking-tighter">TRU</span>
+                            <span class="text-gray-300">|</span>
+                            <span class="text-[#f06424]">U<sup class="text-xs">*</sup></span>
+                            <span class="text-gray-300">|</span>
+                            <span class="text-[#00a79d]">valU<span class="text-[#f06424]">*</span></span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-neutral-600 font-semibold mt-2">العرض ساري على منتجات مختارة في متجر العتيق</p>
+                    </div>
+                </div>
+
+                <!-- Hero Slider Indicators -->
+                <div class="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+                    <span class="w-4 h-1 rounded-full bg-white/60"></span>
+                    <span class="w-4 h-1 rounded-full bg-white/60"></span>
+                    <span class="w-6 h-1.5 rounded-full bg-white shadow"></span>
+                    <span class="w-4 h-1 rounded-full bg-white/60"></span>
+                    <span class="w-4 h-1 rounded-full bg-white/60"></span>
+                </div>
+            </div>
+
+            <!-- 4-Column Cream Benefits Bar (Exact match to image1.jpg) -->
+            <div class="bg-[#fdf3ec] border-b border-[#f3e2d6] py-3.5 px-4">
+                <div class="max-w-[1350px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 divide-y lg:divide-y-0 lg:divide-x lg:divide-x-reverse divide-[#e6d2c4]">
+                    <!-- Benefit 1: Click n Pick -->
+                    <div class="flex items-center justify-center gap-3 pt-2 lg:pt-0">
+                        <span class="text-xs sm:text-sm font-bold text-neutral-800">الاستلام من الفروع</span>
+                        <div class="bg-white px-2.5 py-1 rounded border border-orange-200 text-[11px] font-black leading-tight text-neutral-900">
+                            CLICK <span class="text-[#f06424]">'n</span> PICK
+                        </div>
+                    </div>
+                    <!-- Benefit 2: Support & Maintenance -->
+                    <div class="flex items-center justify-center gap-3 pt-2 lg:pt-0">
+                        <span class="text-xs sm:text-sm font-bold text-neutral-800">الدعم والصيانة المعتمدة</span>
+                        <div class="flex items-center gap-1 bg-[#f06424] text-white px-2 py-1 rounded font-black text-xs">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                            <span>ATEEQ FIX</span>
+                        </div>
+                    </div>
+                    <!-- Benefit 3: Free Shipping -->
+                    <div class="flex items-center justify-center gap-3 pt-2 lg:pt-0">
+                        <span class="text-xs sm:text-sm font-bold text-neutral-800">شحن مجاني وسريع</span>
+                        <div class="flex items-center gap-1 text-neutral-900 font-black text-lg">
+                            <i class="fa-solid fa-truck-fast text-[#f06424]"></i>
+                            <span class="text-[11px] bg-orange-100 text-[#f06424] px-1.5 py-0.5 rounded">Free</span>
+                        </div>
+                    </div>
+                    <!-- Benefit 4: Corporate Solutions -->
+                    <div class="flex items-center justify-center gap-3 pt-2 lg:pt-0">
+                        <span class="text-xs sm:text-sm font-bold text-neutral-800">حلول الشركات والجملة</span>
+                        <div class="w-8 h-8 rounded-lg bg-orange-100 text-[#f06424] flex items-center justify-center">
+                            <i class="fa-solid fa-briefcase text-base"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horizontal Category Icon Slider (Exact match to bottom of image1.jpg) -->
+            <div class="bg-white py-6 px-4 border-b border-gray-100">
+                <div class="max-w-[1380px] mx-auto">
+                    <div id="iconSliderContainer" class="flex items-center justify-between gap-4 sm:gap-6 overflow-x-auto no-scrollbar pb-3">
+                        <!-- Populated via JS -->
+                    </div>
+                    <!-- Orange/Gray Slider Progress Bar Indicator -->
+                    <div class="flex justify-center mt-2">
+                        <div class="w-44 h-1.5 bg-gray-200 rounded-full overflow-hidden flex">
+                            <div class="w-1/2 h-full bg-[#f29156] rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. FEATURED PRODUCTS CAROUSEL / GRID (Exact match to image2.jpg) -->
+        <section id="productsSection" class="max-w-[1400px] mx-auto px-4 py-8">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-5">
+                <div class="flex items-center gap-3">
+                    <h2 id="currentCategoryTitle" class="text-xl sm:text-2xl font-black text-neutral-900">أحدث العروض والمنتجات الأكثر مبيعاً</h2>
+                    <span id="productCountChip" class="text-xs font-bold bg-orange-50 text-[#f06424] px-3 py-1 rounded-full border border-orange-200">12 منتج</span>
+                </div>
+
+                <!-- Category Quick Filter Pills -->
+                <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+                    <button onclick="filterByCategory('all')" data-cat="all" class="cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#f06424] text-white transition">الكل</button>
+                    <button onclick="filterByCategory('phones')" data-cat="phones" class="cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-gray-100 hover:bg-gray-200 text-neutral-700 transition">موبايلات</button>
+                    <button onclick="filterByCategory('headphones')" data-cat="headphones" class="cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-gray-100 hover:bg-gray-200 text-neutral-700 transition">سماعات رأس</button>
+                    <button onclick="filterByCategory('earbuds')" data-cat="earbuds" class="cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-gray-100 hover:bg-gray-200 text-neutral-700 transition">أيربودز</button>
+                    <button onclick="filterByCategory('chargers')" data-cat="chargers" class="cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-gray-100 hover:bg-gray-200 text-neutral-700 transition">شواحن وباور بانك</button>
+                    <button onclick="filterByCategory('cases')" data-cat="cases" class="cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-gray-100 hover:bg-gray-200 text-neutral-700 transition">جرابات وحماية</button>
+                    <button onclick="filterByCategory('watches')" data-cat="watches" class="cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-gray-100 hover:bg-gray-200 text-neutral-700 transition">ساعات ذكية</button>
+                    <button onclick="filterByCategory('speakers')" data-cat="speakers" class="cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-gray-100 hover:bg-gray-200 text-neutral-700 transition">سماعات بلوتوث ولابتوب</button>
+                </div>
+            </div>
+
+            <!-- Products Grid (6-column layout on desktop matching image2.jpg) -->
+            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3.5">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- 3. BROWSE CATEGORIES SECTION ("تصفح الفئات" - Exact match to 3.jpg) -->
+        <section class="max-w-[1400px] mx-auto px-4 py-8">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl sm:text-2xl font-black text-neutral-900">تصفح الفئات</h2>
+            </div>
+
+            <div id="browseCategoriesGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Populated dynamically via JS matching 3.jpg -->
+            </div>
+        </section>
+
+        <!-- 4. DUAL PROMO CAMPAIGN BOXES ("وفّر أكتر" & "استعد لمدرستك / جهز موبايلك" - Exact match to 4.png) -->
+        <section class="max-w-[1400px] mx-auto px-4 py-8 mb-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-[#f7f7f7] p-4 sm:p-6 rounded-2xl border border-gray-200">
+
+                <!-- Right Box in RTL: استعد لمدرستك! / جهز موبايلك واستمتع بالصوت! -->
+                <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+                    <h3 class="text-xl sm:text-2xl font-black text-neutral-900 mb-4 text-right">استعد لمدرستك وصوتياتك!</h3>
+                    <div id="promoBoxRightGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+
+                <!-- Left Box in RTL: وفّر أكتر -->
+                <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+                    <h3 class="text-xl sm:text-2xl font-black text-neutral-900 mb-4 text-right">وفّر أكتر</h3>
+                    <div id="promoBoxLeftGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== PRODUCT DETAIL VIEW (Combines 6.jpg & 5.png) ==================== -->
+    <section id="productDetailView" class="hidden flex-1 bg-white py-6 px-4">
+        <div class="max-w-[1320px] mx-auto">
+
+            <!-- Top Breadcrumb Bar & Back Button -->
+            <div class="flex flex-wrap items-center justify-between gap-4 pb-5 mb-6 border-b border-gray-200">
+                <nav id="detailBreadcrumb" class="flex items-center gap-2 text-xs sm:text-sm text-neutral-500 font-medium">
+                    <!-- Populated via JS -->
+                </nav>
+
+                <div class="flex items-center gap-2">
+                    <button onclick="setDetailLayoutMode('installment')" id="btnLayout6" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-[#f06424] text-white transition">
+                        عرض التقسيط والمعرض (نمط 1)
+                    </button>
+                    <button onclick="setDetailLayoutMode('specs')" id="btnLayout5" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-gray-100 text-neutral-700 hover:bg-gray-200 transition">
+                        عرض جدول المواصفات (نمط 2)
+                    </button>
+                    <button onclick="showHomeView()" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-gray-300 hover:border-[#f06424] text-xs font-bold text-neutral-800 transition mr-2">
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span>العودة للمتجر</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- LAYOUT MODE A: Exact Match to 6.jpg (Beige Gallery + Vertical Thumbnails + Milo Installment + Orange Pill CTA) -->
+            <div id="detailModeInstallment" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
+
+                <!-- Right Side in RTL (7 cols): Vertical Thumbnails + Beige Showcase Container -->
+                <div class="lg:col-span-7 flex flex-col-reverse sm:flex-row gap-4 items-start">
+                    <!-- 3 Vertical Thumbnails on Right (in RTL flow, first child is rightmost) -->
+                    <div id="detailThumbnailsList" class="flex sm:flex-col gap-3">
+                        <!-- Populated via JS -->
+                    </div>
+
+                    <!-- Main Beige Showcase Box (#f6f3f0) -->
+                    <div class="relative flex-1 w-full bg-[#f6f3f0] rounded-2xl p-6 sm:p-10 min-h-[380px] sm:min-h-[460px] flex items-center justify-center border border-gray-100">
+                        <!-- Top Right Save Pill Badge ("هتوفر 1000 ج.م") -->
+                        <div id="detailSaveBadge" class="absolute top-4 right-4 bg-[#f05423] text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-sm">
+                            هتوفر 1,000 ج.م
+                        </div>
+
+                        <!-- Top Left Wishlist Heart Circle -->
+                        <button id="detailWishlistBtn" class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white text-neutral-700 hover:text-[#f06424] shadow-sm flex items-center justify-center transition">
+                            <i class="fa-regular fa-heart text-lg"></i>
+                        </button>
+
+                        <!-- Main Product Studio Image -->
+                        <img id="detailMainImage" src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=700&q=85" alt="صورة المنتج" class="max-h-[330px] w-auto object-contain transition duration-300">
+
+                        <!-- Bottom Left Expand Button -->
+                        <button onclick="zoomProductImage()" class="absolute bottom-4 left-4 w-10 h-10 rounded-full bg-white text-neutral-700 hover:text-neutral-900 shadow-sm flex items-center justify-center transition" title="تكبير الصورة">
+                            <i class="fa-solid fa-expand text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Left Side in RTL (5 cols): Title, Price, Milo Installment, Exclusive Offers Box, Full-Width Orange Pill Button, Quick Specs -->
+                <div class="lg:col-span-5 flex flex-col text-right">
+                    <h1 id="detailTitle6" class="text-lg sm:text-xl font-bold text-neutral-900 leading-relaxed mb-4"></h1>
+
+                    <!-- Price Row -->
+                    <div class="flex items-baseline gap-3 mb-4">
+                        <span id="detailPrice6" class="text-2xl sm:text-3xl font-black text-neutral-900"></span>
+                        <span id="detailOldPrice6" class="text-sm sm:text-base text-[#f05423] line-through font-bold"></span>
+                    </div>
+
+                    <!-- Installment Row ("يبدأ من 4,475.18 /الشهر مع مايلو" + "خطط التقسيط") -->
+                    <div class="flex items-center justify-between py-3 border-y border-gray-100 text-xs sm:text-sm mb-4">
+                        <div class="flex items-center gap-1.5 text-neutral-600 font-medium">
+                            <span>يبدأ من</span>
+                            <span id="detailMonthlyInstallment" class="font-bold text-neutral-800"></span>
+                            <span>/الشهر مع</span>
+                            <span class="font-black text-[#a11d87] text-base">مايلو</span>
+                        </div>
+                        <button onclick="showToast('جميع خطط التقسيط متاحة لمدة 6 إلى 36 شهر بدون مقدم!')" class="text-[#f05423] font-bold underline hover:text-[#d44113]">
+                            خطط التقسيط
+                        </button>
+                    </div>
+
+                    <!-- Exclusive Installment Offers Cream Card -->
+                    <div onclick="showToast('عروض التقسيط الحصرية تشمل فاليو وأمان وترو وبطاقات البنوك المعتمدة')" class="bg-[#fdf2eb] hover:bg-[#fbe8dc] cursor-pointer transition rounded-xl p-3.5 flex items-center justify-between mb-5 border border-[#f7decb]">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-[#1d2f6f] text-white flex items-center justify-center font-bold text-xs">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs sm:text-sm font-bold text-neutral-800">عروض تقسيط حصرية</p>
+                                <p class="text-[11px] text-neutral-500">عروض لفترة محدودة على خطط دفع متجر العتيق</p>
+                            </div>
+                        </div>
+                        <div class="w-6 h-6 rounded-full bg-white text-[#f05423] flex items-center justify-center shadow-sm">
+                            <i class="fa-solid fa-chevron-left text-[10px]"></i>
+                        </div>
+                    </div>
+
+                    <!-- Full-Width Rounded Pill Orange Add To Cart Button ("أضف للسلة") -->
+                    <button id="detailAddToCartBtn6" class="w-full bg-[#f05423] hover:bg-[#d94315] text-white font-bold py-3.5 rounded-full shadow-md transition text-sm sm:text-base mb-6">
+                        أضف للسلة
+                    </button>
+
+                    <!-- Quick Specs Rows at Bottom (Exact match to 6.jpg) -->
+                    <div id="detailQuickSpecs6" class="divide-y divide-gray-100 border-t border-gray-100 text-xs sm:text-sm">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAYOUT MODE B: Detailed 2-Column Technical Specs View (Exact Match to 5.png) -->
+            <div id="detailModeSpecs" class="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- Right Side in RTL (7 cols): Brand, Rating, 2-Column Specs Table, Green Save Badge, Pink Discount Pill -->
+                    <div class="lg:col-span-7 text-right">
+                        <p id="specBrandName" class="text-sm font-bold text-neutral-400 mb-1"></p>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-bold text-neutral-800">★ 5.0</span>
+                            <span class="text-xs font-bold text-[#f06424] underline cursor-pointer">12 تعليق من المستخدمين</span>
+                        </div>
+
+                        <h2 id="specProductTitle" class="text-xl sm:text-2xl font-bold text-neutral-900 mb-5"></h2>
+
+                        <!-- 2-Column Specification Grid matching 5.png -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5 text-xs sm:text-sm mb-6 bg-[#fafafa] p-4 rounded-xl border border-gray-100">
+                            <div class="space-y-2">
+                                <p><span class="text-neutral-400">رمز المنتج:</span> <span id="specSku" class="font-bold text-neutral-800"></span></p>
+                                <p><span class="text-neutral-400">الضمان:</span> <span id="specWarranty" class="font-bold text-neutral-800"></span></p>
+                                <p><span class="text-neutral-400">المواصفات الأساسية:</span> <span id="specPrimary" class="font-bold text-neutral-800"></span></p>
+                                <p><span class="text-neutral-400">البطارية / الطاقة:</span> <span id="specBattery" class="font-bold text-neutral-800"></span></p>
+                                <p><span class="text-neutral-400">اللون:</span> <span id="specColor" class="font-bold text-neutral-800"></span></p>
+                            </div>
+                            <div class="space-y-2">
+                                <p><span class="text-neutral-400">التوفر:</span> <span class="font-bold text-green-600">متوفر في المخزن</span></p>
+                                <p><span class="text-neutral-400">الاتصال / الشريحة:</span> <span id="specConnectivity" class="font-bold text-neutral-800"></span></p>
+                                <p><span class="text-neutral-400">الذاكرة / السعة:</span> <span id="specStorage" class="font-bold text-neutral-800"></span></p>
+                                <p><span class="text-neutral-400">الميزة الإضافية:</span> <span id="specExtra" class="font-bold text-neutral-800"></span></p>
+                            </div>
+                        </div>
+
+                        <!-- Green Savings Line ("وفر 12,600 ج.م") -->
+                        <div class="flex items-center gap-1.5 text-green-600 font-bold text-xs sm:text-sm mb-1">
+                            <i class="fa-solid fa-tag"></i>
+                            <span id="specSaveAmount"></span>
+                        </div>
+
+                        <!-- Old Price -->
+                        <div id="specOldPrice" class="text-sm text-neutral-400 line-through font-semibold mb-1"></div>
+
+                        <!-- Current Price + Pink Discount Badge ("27% تخفيض") -->
+                        <div class="flex flex-wrap items-center gap-4">
+                            <span id="specCurrentPrice" class="text-2xl sm:text-3xl font-black text-neutral-900"></span>
+                            <span id="specDiscountBadge" class="bg-[#f8d7da] text-[#b02a37] text-xs font-bold px-3 py-1 rounded"></span>
+                            <button id="detailAddToCartBtn5" class="bg-[#f06424] hover:bg-[#d95316] text-white font-bold px-6 py-2.5 rounded-xl text-xs sm:text-sm shadow transition">
+                                <i class="fa-solid fa-cart-plus ml-1"></i> أضف للسلة الآن
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Left Side in RTL (5 cols): Clean White Studio Product Image -->
+                    <div class="lg:col-span-5 flex items-center justify-center p-4">
+                        <img id="specSideImage" src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&w=700&q=85" alt="صورة المواصفات" class="max-h-[340px] object-contain">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== SHOPPING CART SLIDE-OVER DRAWER ==================== -->
+    <div id="cartDrawerBackdrop" onclick="toggleCartDrawer(false)" class="fixed inset-0 bg-black/50 z-50 hidden backdrop-blur-xs transition-opacity"></div>
+    <aside id="cartDrawer" class="fixed top-0 left-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-4 border-b border-gray-200 flex items-center justify-between bg-[#141414] text-white">
+            <div class="flex items-center gap-2.5">
+                <i class="fa-solid fa-bag-shopping text-[#f06424] text-lg"></i>
+                <h3 class="font-bold text-base">سلة تسوق العتيق</h3>
+                <span id="drawerCartCount" class="bg-[#f06424] text-white text-xs px-2 py-0.5 rounded-full font-bold">0</span>
+            </div>
+            <button onclick="toggleCartDrawer(false)" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-4 space-y-3">
+            <!-- Populated via JS -->
+        </div>
+
+        <div class="p-4 border-t border-gray-200 bg-gray-50">
+            <div class="flex items-center justify-between mb-2 text-xs text-neutral-500">
+                <span>الشحن والتوصيل</span>
+                <span class="text-green-600 font-bold">مجاني (عرض العتيق)</span>
+            </div>
+            <div class="flex items-center justify-between mb-4 text-base font-black text-neutral-900">
+                <span>الإجمالي النهائي:</span>
+                <span id="cartTotalPrice" class="text-[#f06424] text-lg">0 ج.م</span>
+            </div>
+            <button onclick="completeCheckout()" class="w-full bg-[#f06424] hover:bg-[#d95316] text-white font-bold py-3 rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>إتمام الطلب الآن (متاح تقسيط 0%)</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ==================== IMAGE ZOOM MODAL ==================== -->
+    <div id="imageZoomModal" onclick="closeZoomModal()" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4">
+        <div class="relative max-w-2xl w-full bg-white rounded-2xl p-6 flex items-center justify-center">
+            <button onclick="closeZoomModal()" class="absolute top-3 left-3 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 text-neutral-800 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="zoomedModalImg" src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=700&q=85" alt="تكبير المنتج" class="max-h-[75vh] object-contain">
+        </div>
+    </div>
+
+    <!-- ==================== TOAST NOTIFICATION ==================== -->
+    <div id="toastBox" class="fixed bottom-5 right-5 z-50 hidden bg-neutral-900 text-white px-4 py-3 rounded-xl shadow-xl border-r-4 border-[#f06424] text-xs sm:text-sm font-bold flex items-center gap-2.5 max-w-sm">
+        <i class="fa-solid fa-circle-check text-[#f06424] text-base"></i>
+        <span id="toastMessage">تمت العملية بنجاح</span>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-[#111111] text-neutral-400 pt-12 pb-8 px-4 border-t border-neutral-800 mt-auto">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-9 h-9 rounded-lg bg-[#f06424] text-white flex items-center justify-center font-black text-xl">ع</div>
+                    <span class="text-xl font-black text-white">متجر العتيق</span>
+                </div>
+                <p class="text-xs leading-relaxed text-neutral-400 mb-4">
+                    وجهتك الأولى في مصر لشراء أحدث الهواتف الذكية، السماعات الاحترافية، الأيربودز، الشواحن الأصلية، وإكسسوارات الموبايل بضمان معتمد وتقسيط بسعر الكاش.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-3">الأقسام الرئيسية</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><button onclick="showHomeView(); filterByCategory('phones')" class="hover:text-[#f06424]">موبايلات وتابلت</button></li>
+                    <li><button onclick="showHomeView(); filterByCategory('headphones')" class="hover:text-[#f06424]">سماعات رأس احترافية</button></li>
+                    <li><button onclick="showHomeView(); filterByCategory('earbuds')" class="hover:text-[#f06424]">سماعات أيربودز لاسلكية</button></li>
+                    <li><button onclick="showHomeView(); filterByCategory('chargers')" class="hover:text-[#f06424]">شواحن سريعة وباور بانك</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-3">خدمات العتيق</h4>
+                <ul class="space-y-2 text-xs">
+                    <li>الاستلام من الفروع (Click 'n Pick)</li>
+                    <li>تقسيط 0% مقدم و 0% فوائد على 12 شهر</li>
+                    <li>ضمان وصيانة العتيق المعتمدة</li>
+                    <li>شحن مجاني لجميع المحافظات</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm mb-3">تواصل معنا</h4>
+                <p class="text-xs mb-2"><i class="fa-solid fa-phone text-[#f06424] ml-2"></i> الخط الساخن: 19966</p>
+                <p class="text-xs mb-4"><i class="fa-solid fa-location-dot text-[#f06424] ml-2"></i> الفروع: القاهرة، الجيزة، الإسكندرية، المنصورة، طنطا</p>
+                <div class="flex items-center gap-2 text-xs text-white font-bold">
+                    <span class="px-2.5 py-1 rounded bg-neutral-800">valU*</span>
+                    <span class="px-2.5 py-1 rounded bg-neutral-800">TRU</span>
+                    <span class="px-2.5 py-1 rounded bg-neutral-800">مايلو</span>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-[1400px] mx-auto pt-6 border-t border-neutral-800 text-center text-xs text-neutral-500">
+            © 2026 متجر العتيق للإلكترونيات والموبايلات والسماعات — جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT LOGIC & NANO BANANA INTEGRATION ==================== -->
+    <script>
+        // ============================================================================
+        // 1. NANO BANANA API CONFIGURATION (gemini-3.1-flash-image)
+        // ============================================================================
+        const apiKey = "";
+        const NANO_BANANA_MODELS = [
+            "gemini-3.1-flash-image",
+            "gemini-3.1-flash-image-preview",
+            "gemini-3.1-flash-lite-image"
+        ];
+        const nanoChatHistories = {};
+        const generatedStudioCache = {};
+
+        async function fetchWithRetry(url, options, maxRetries = 2) {
+            let delay = 1000;
+            for (let attempt = 0; attempt <= maxRetries; attempt++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.ok) {
+                        return await response.json();
+                    }
+                    if (attempt === maxRetries) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                } catch (err) {
+                    if (attempt === maxRetries) throw err;
+                }
+                await new Promise(r => setTimeout(r, delay));
+                delay *= 2;
+            }
+        }
+
+        async function callNanoBananaImageAPI(promptText, aspectRatio = "1:1", targetKey = null, isEditTurn = false) {
+            let contentsPayload;
+            if (isEditTurn && targetKey && nanoChatHistories[targetKey] && nanoChatHistories[targetKey].length > 0) {
+                nanoChatHistories[targetKey].push({
+                    role: "user",
+                    parts: [{ text: promptText }]
+                });
+                contentsPayload = nanoChatHistories[targetKey];
+            } else {
+                contentsPayload = [{
+                    role: "user",
+                    parts: [{ text: promptText }]
+                }];
+            }
+
+            let lastError = null;
+            for (const modelName of NANO_BANANA_MODELS) {
+                try {
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+                    const payload = {
+                        contents: contentsPayload,
+                        generationConfig: {
+                            responseModalities: ["IMAGE"],
+                            imageConfig: { aspectRatio: aspectRatio }
+                        }
+                    };
+
+                    const result = await fetchWithRetry(apiUrl, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const candidate = result?.candidates?.[0];
+                    const part = candidate?.content?.parts?.find(p => p.inlineData);
+
+                    if (part && part.inlineData?.data) {
+                        if (targetKey && candidate?.content) {
+                            if (!isEditTurn) {
+                                nanoChatHistories[targetKey] = [
+                                    { role: "user", parts: [{ text: promptText }] },
+                                    candidate.content
+                                ];
+                            } else {
+                                nanoChatHistories[targetKey].push(candidate.content);
+                            }
+                        }
+                        const mimeType = part.inlineData.mimeType || "image/png";
+                        return `data:${mimeType};base64,${part.inlineData.data}`;
+                    }
+                } catch (err) {
+                    lastError = err;
+                }
+            }
+            throw lastError || new Error("Nano Banana generation fallback");
+        }
+
+        // ============================================================================
+        // 2. REAL PHOTOGRAPHIC STUDIO GALLERIES (ZERO SVG - 100% REAL PHOTOS)
+        // ============================================================================
+        const STUDIO_PHOTO_GALLERIES = {
+            hero_banner_bg: [
+                "https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1600&q=80"
+            ],
+            phone_blue: [
+                "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=700&q=85"
+            ],
+            phone_white_oppo: [
+                "https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1512054502232-10a0a035d672?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?auto=format&fit=crop&w=700&q=85"
+            ],
+            phone_black_huawei: [
+                "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=85"
+            ],
+            phone_iphone_orange: [
+                "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=700&q=85"
+            ],
+            headphone_pro: [
+                "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=700&q=85"
+            ],
+            tws_buds: [
+                "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=700&q=85"
+            ],
+            smartwatch_orange: [
+                "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=700&q=85"
+            ],
+            speaker_jbl: [
+                "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1589003077984-894e133dabab?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=700&q=85"
+            ],
+            charger_anker: [
+                "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1615526675159-e248c3021d3f?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=700&q=85"
+            ],
+            powerbank_20k: [
+                "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=700&q=85"
+            ],
+            magsafe_case: [
+                "https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=700&q=85"
+            ],
+            laptop_neo: [
+                "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=85"
+            ],
+            backpack_tech: [
+                "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=700&q=85",
+                "https://images.unsplash.com/photo-1581605405669-fcdf81165afa?auto=format&fit=crop&w=700&q=85"
+            ]
+        };
+
+        function generateNanoStudioPNG(sceneType, bgColor = 'transparent', angle = 0) {
+            const cacheKey = `${sceneType}_${angle}`;
+            if (generatedStudioCache[cacheKey]) {
+                return generatedStudioCache[cacheKey];
+            }
+            const gallery = STUDIO_PHOTO_GALLERIES[sceneType] || STUDIO_PHOTO_GALLERIES.phone_iphone_orange;
+            return gallery[angle % gallery.length];
+        }
+
+        // ============================================================================
+        // 3. STORE CATALOG DATA (ICON SLIDER, CATEGORIES, PRODUCTS & PROMO BUNDLES)
+        // ============================================================================
+        const iconSliderItems = [
+            { id: 's_phones', title: 'موبايلات', cat: 'phones', svgType: 'phone_iphone_orange' },
+            { id: 's_laptop', title: 'لابتوب وتابلت', cat: 'speakers', svgType: 'laptop_neo' },
+            { id: 's_headphones', title: 'سماعات رأس', cat: 'headphones', svgType: 'headphone_pro' },
+            { id: 's_earbuds', title: 'أيربودز', cat: 'earbuds', svgType: 'tws_buds' },
+            { id: 's_watches', title: 'ساعات ذكية', cat: 'watches', svgType: 'smartwatch_orange' },
+            { id: 's_chargers', title: 'شواحن سريعة', cat: 'chargers', svgType: 'charger_anker' },
+            { id: 's_powerbank', title: 'باور بانك', cat: 'chargers', svgType: 'powerbank_20k' },
+            { id: 's_cases', title: 'جرابات وحماية', cat: 'cases', svgType: 'magsafe_case' },
+            { id: 's_bags', title: 'شنط تقنية', cat: 'cases', svgType: 'backpack_tech' },
+            { id: 's_speakers', title: 'مكبرات الصوت', cat: 'speakers', svgType: 'speaker_jbl' }
+        ];
+
+        const browseCategoriesData = [
+            { id: 'cat_1', title: 'موبايلات وتابلت والإكسسوارات', filter: 'phones', svgType: 'phone_iphone_orange', prompt: 'Studio product photo of flagship orange titanium smartphone on clean white background' },
+            { id: 'cat_2', title: 'سماعات رأس وعزل ضوضاء', filter: 'headphones', svgType: 'headphone_pro', prompt: 'Studio product photo of matte black wireless over-ear headphones on white background' },
+            { id: 'cat_3', title: 'أيربودز وسماعات لاسلكية', filter: 'earbuds', svgType: 'tws_buds', prompt: 'Studio product photo of dark green wireless earbuds in charging case on white background' },
+            { id: 'cat_4', title: 'شواحن سريعة وباور بانك', filter: 'chargers', svgType: 'charger_anker', prompt: 'Studio product photo of fast GaN wall charger and braided USB-C cable on white background' },
+            { id: 'cat_5', title: 'جرابات MagSafe واسكرينات', filter: 'cases', svgType: 'magsafe_case', prompt: 'Studio product photo of clear MagSafe phone case on white background' },
+            { id: 'cat_6', title: 'اكسسوارات قابلة للارتداء', filter: 'watches', svgType: 'smartwatch_orange', prompt: 'Studio product photo of ultra smartwatch with orange ocean band on white background' },
+            { id: 'cat_7', title: 'اجهزة صوت وتسجيل JBL', filter: 'speakers', svgType: 'speaker_jbl', prompt: 'Studio product photo of portable bluetooth speaker with headphones on white background' },
+            { id: 'cat_8', title: 'اللابتوب والكمبيوتر والإكسسوارات', filter: 'speakers', svgType: 'laptop_neo', prompt: 'Studio product photo of modern thin laptop on white background' },
+            { id: 'cat_9', title: 'مستلزمات وشنط غير الكترونية', filter: 'cases', svgType: 'backpack_tech', prompt: 'Studio product photo of sleek hard-shell tech laptop backpack on white background' },
+            { id: 'cat_10', title: 'تك كير - ضمان العتيق', filter: 'all', svgType: 'magsafe_case', isTechCare: true, prompt: 'Tech care warranty shield badge' }
+        ];
+
+        const productsData = [
+            {
+                id: 'prod_1',
+                sku: 'ATQ-XM17',
+                name: 'شاومي ريدمي 17 5G - رامات 6 جيجا - 256 جيجا بايت - أزرق',
+                brand: 'شاومي',
+                category: 'phones',
+                price: 15499,
+                oldPrice: 21299,
+                rating: '5.0',
+                reviewsCount: 18,
+                soldLastWeek: 48,
+                badge: 'جديد',
+                badgeType: 'new',
+                freeGiftType: 'earbuds',
+                svgType: 'phone_blue',
+                nanoPrompt: 'Studio product photo of blue Xiaomi Redmi 5G smartphone front and back view isolated on pure white background',
+                specs: {
+                    warranty: 'ضمان العتيق المعتمد لمدة سنتين',
+                    primary: 'شاشة 6.67 بوصة AMOLED 120Hz',
+                    battery: '5000 مللي أمبير - شحن توربو 67 واط',
+                    color: 'أزرق ملكي',
+                    connectivity: 'شريحتين 5G + دعم NFC',
+                    storage: '256 جيجا بايت + رام 6 جيجا',
+                    extra: 'هدية مجانية: إيربودز بلوتوث أصلية',
+                    gpu: 'معالج رسومات Adreno فائق السرعة',
+                    cpu: 'معالج Snapdragon 5G ثماني النواة',
+                    os: 'Android 15 مع واجهة HyperOS'
+                }
+            },
+            {
+                id: 'prod_2',
+                sku: 'MB052',
+                name: 'اوبو رينو 16F 5G - رامات 12 جيجا - 256 جيجا بايت - أبيض',
+                brand: 'اوبو',
+                category: 'phones',
+                price: 33999,
+                oldPrice: 46599,
+                rating: '5.0',
+                reviewsCount: 12,
+                soldLastWeek: 34,
+                badge: 'الأكثر مبيعا',
+                badgeType: 'bestseller',
+                freeGiftType: null,
+                svgType: 'phone_white_oppo',
+                nanoPrompt: 'Studio product photo of white Oppo Reno 5G smartphone front and back on pure white background',
+                specs: {
+                    warranty: 'ضمان محلي معتمد 12 شهر',
+                    primary: 'شاشة 6.57 بوصة بدقة 1080 × 2372 بكسل',
+                    battery: 'كاميرا خلفية ثلاثية 50+50+8 ميجابكسل',
+                    color: 'أبيض لؤلؤي',
+                    connectivity: 'شريحة نانو + شريحة نانو + eSIM',
+                    storage: '256 جيجا بايت - رامات 12 جيجا بايت',
+                    extra: 'كاميرا أمامية 50 ميجابكسل بورتريه AI',
+                    gpu: 'معالج رسومات Mali-G610 MC6',
+                    cpu: 'معالج MediaTek Dimensity 5G ثماني النواة',
+                    os: 'ColorOS 15 مبني على Android 15'
+                }
+            },
+            {
+                id: 'prod_3',
+                sku: 'ATQ-HW15',
+                name: 'هواوي نوفا 15 ماكس - رامات 8 جيجا - 256 جيجا بايت - أسود',
+                brand: 'هواوي',
+                category: 'phones',
+                price: 21999,
+                oldPrice: 30199,
+                rating: '4.9',
+                reviewsCount: 9,
+                soldLastWeek: 11,
+                badge: null,
+                badgeType: null,
+                freeGiftType: null,
+                svgType: 'phone_black_huawei',
+                nanoPrompt: 'Studio product photo of black Huawei Nova smartphone with gold camera ring on pure white background',
+                specs: {
+                    warranty: 'ضمان العتيق لمدة سنة كاملة',
+                    primary: 'شاشة OLED منحنية 6.78 بوصة 120Hz',
+                    battery: '4800 مللي أمبير - شحن SuperCharge 100W',
+                    color: 'أسود ذهبي',
+                    connectivity: 'شريحتين اتصال + Wi-Fi 6',
+                    storage: '256 جيجا بايت + رام 8 جيجا',
+                    extra: 'كاميرا سيلفي مزدوجة 60 ميجابكسل',
+                    gpu: 'معالج رسومات فائق الدقة',
+                    cpu: 'معالج Kirin ثماني النواة',
+                    os: 'EMUI 14 الحديث'
+                }
+            },
+            {
+                id: 'prod_4',
+                sku: 'ATQ-IP16PM',
+                name: 'أبل آيفون 16 برو ماكس - 256 جيجا بايت - تيتانيوم صحراوي',
+                brand: 'أبل',
+                category: 'phones',
+                price: 68990,
+                oldPrice: 74500,
+                rating: '5.0',
+                reviewsCount: 64,
+                soldLastWeek: 29,
+                badge: 'الأكثر مبيعا',
+                badgeType: 'bestseller',
+                freeGiftType: 'case',
+                svgType: 'phone_iphone_orange',
+                nanoPrompt: 'Studio product photo of desert titanium iPhone 16 Pro Max front and back on pure white background',
+                specs: {
+                    warranty: 'ضمان أبل الرسمي + ضمان العتيق',
+                    primary: 'شاشة Super Retina XDR 6.9 بوصة ProMotion',
+                    battery: 'بطارية تدوم حتى 33 ساعة تشغيل فيديو',
+                    color: 'تيتانيوم صحراوي',
+                    connectivity: '5G + Face ID + USB-C 3.2',
+                    storage: '256 جيجا بايت NVMe',
+                    extra: 'زر التحكم الاحترافي بالكاميرا 48MP',
+                    gpu: 'معالج رسومات أبل 6 نواة',
+                    cpu: 'شريحة Apple A18 Pro سداسية النواة',
+                    os: 'iOS 18'
+                }
+            },
+            {
+                id: 'prod_5',
+                sku: 'ATQ-SNXM5',
+                name: 'سماعة رأس لاسلكية سوني WH-1000XM5 عزل ضوضاء ذكي ANC - أسود',
+                brand: 'سوني',
+                category: 'headphones',
+                price: 14999,
+                oldPrice: 17999,
+                rating: '5.0',
+                reviewsCount: 41,
+                soldLastWeek: 25,
+                badge: 'الأكثر مبيعا',
+                badgeType: 'bestseller',
+                freeGiftType: null,
+                svgType: 'headphone_pro',
+                nanoPrompt: 'Studio product photo of Sony WH-1000XM5 matte black wireless headphones isolated on white background',
+                specs: {
+                    warranty: 'ضمان الوكيل المعتمد 12 شهر',
+                    primary: '8 ميكروفونات لعزل الضوضاء الفائق ANC',
+                    battery: 'حتى 30 ساعة عمل متواصلة + شحن سريع PD',
+                    color: 'أسود مطفي',
+                    connectivity: 'Bluetooth 5.3 + Multipoint لجهازين',
+                    storage: 'محرك صوتي 30 ملم ألياف كربون',
+                    extra: 'حقيبة سفر أصلية مرفقة في العلبة',
+                    gpu: 'معالج صوتي متكامل V1 + QN1',
+                    cpu: 'محرك تحسين الصوت الرقمي DSEE Extreme',
+                    os: 'متوافق مع iOS و Android و Windows'
+                }
+            },
+            {
+                id: 'prod_6',
+                sku: 'ATQ-APPRO2',
+                name: 'سماعة أبل AirPods Pro الجيل الثاني بمنفذ شحن MagSafe USB-C',
+                brand: 'أبل',
+                category: 'earbuds',
+                price: 11499,
+                oldPrice: 13200,
+                rating: '5.0',
+                reviewsCount: 53,
+                soldLastWeek: 39,
+                badge: 'جديد',
+                badgeType: 'new',
+                freeGiftType: 'case',
+                svgType: 'tws_buds',
+                nanoPrompt: 'Studio product photo of wireless earbuds inside open charging case isolated on white background',
+                specs: {
+                    warranty: 'ضمان أبل الرسمي لمدة سنة',
+                    primary: 'عزل ضوضاء نشط مضاعف 2x + وضع شفافية متكيف',
+                    battery: '30 ساعة إجمالية مع علبة الشحن MagSafe',
+                    color: 'أخضر زيتي / أبيض',
+                    connectivity: 'Bluetooth 5.3 + شريحة Apple H2',
+                    storage: 'مقاومة للغبار والعرق والماء بمعيار IP54',
+                    extra: 'سماعة خارجية مدمجة في العلبة لتتبع الموقع',
+                    gpu: 'صوت مكاني مخصص مع تتبع ديناميكي للرأس',
+                    cpu: 'شريحة السماعات Apple H2 الاحترافية',
+                    os: 'iOS / iPadOS / macOS'
+                }
+            },
+            {
+                id: 'prod_7',
+                sku: 'ATQ-SWULTRA',
+                name: 'ساعة ذكية ألترا برو شاشة AMOLED 2.1 بوصة مقاومة للماء - سوار برتقالي',
+                brand: 'العتيق تك',
+                category: 'watches',
+                price: 2499,
+                oldPrice: 3499,
+                rating: '4.9',
+                reviewsCount: 22,
+                soldLastWeek: 19,
+                badge: 'جديد',
+                badgeType: 'new',
+                freeGiftType: null,
+                svgType: 'smartwatch_orange',
+                nanoPrompt: 'Studio product photo of Titanium Smart Watch Ultra with orange ocean strap on white background',
+                specs: {
+                    warranty: 'ضمان استبدال فوري 12 شهر من العتيق',
+                    primary: 'شاشة AMOLED فائقة السطوع 2000 شمعة',
+                    battery: 'بطارية تدوم حتى 10 أيام + شحن لاسلكي مغناطيسي',
+                    color: 'إطار تيتانيوم / سوار برتقالي',
+                    connectivity: 'مكالمات بلوتوث واضحة + إشعارات ذكية',
+                    storage: 'أكثر من 100 وضع رياضي ومستشعر نبض وأكسجين',
+                    extra: 'مقاومة للماء بمعيار IP68 وهيكل معدني متين',
+                    gpu: 'واجهة 3D سريعة الاستجابة 60Hz',
+                    cpu: 'معالج ثنائي النواة موفر للطاقة',
+                    os: 'متوافق مع الآيفون والأندرويد'
+                }
+            },
+            {
+                id: 'prod_8',
+                sku: 'ATQ-ANK65',
+                name: 'شاحن أنكر نانو II سريع 65 واط بتقنية GaN ثلاثي المنافذ + كابل Type-C',
+                brand: 'أنكر',
+                category: 'chargers',
+                price: 1899,
+                oldPrice: 2450,
+                rating: '5.0',
+                reviewsCount: 37,
+                soldLastWeek: 42,
+                badge: 'الأكثر مبيعا',
+                badgeType: 'bestseller',
+                freeGiftType: null,
+                svgType: 'charger_anker',
+                nanoPrompt: 'Studio product photo of Anker 65W GaN black fast wall charger with USB-C cable on white background',
+                specs: {
+                    warranty: 'ضمان أنكر الذهبي 18 شهر لدى العتيق',
+                    primary: 'قدرة 65 واط تشحن الموبايل واللابتوب معاً',
+                    battery: 'تقنية GaN II بحجم أصغر 58% وحرارة أقل',
+                    color: 'أسود كربوني',
+                    connectivity: 'منفذين USB-C PD + منفذ USB-A سريع',
+                    storage: 'كابل مضفر 100 واط بطول 1.5 متر مرفق',
+                    extra: 'حماية MultiProtect ضد ارتفاع التيار والحرارة',
+                    gpu: 'توزيع ذكي للطاقة PowerIQ 3.0',
+                    cpu: 'شريحة GaN II الذكية',
+                    os: 'يدعم iPhone و Samsung Super Fast Charging و MacBook'
+                }
+            },
+            {
+                id: 'prod_9',
+                sku: 'ATQ-PB20K',
+                name: 'باور بانك بيسوس 20000 مللي أمبير شحن سريع 22.5 واط بشاشة رقمية LED',
+                brand: 'بيسوس',
+                category: 'chargers',
+                price: 1399,
+                oldPrice: 1899,
+                rating: '4.8',
+                reviewsCount: 16,
+                soldLastWeek: 27,
+                badge: null,
+                badgeType: null,
+                freeGiftType: null,
+                svgType: 'powerbank_20k',
+                nanoPrompt: 'Studio product photo of sleek 20000mAh power bank with digital LED display on pure white background',
+                specs: {
+                    warranty: 'ضمان العتيق لمدة 12 شهر',
+                    primary: 'سعة فعلية 20,000 مللي أمبير تكفي 4 شحنات كاملة',
+                    battery: 'شحن سريع بقوة 22.5W SCP و 20W PD للآيفون',
+                    color: 'أسود ميتاليك',
+                    connectivity: '3 منافذ شحن (Type-C دخل/خرج + منفذين USB)',
+                    storage: 'شاشة رقمية ذكية لعرض النسبة المئوية والفولت',
+                    extra: 'مسموح به على الطائرات ومزود بحساس حرارة NTC',
+                    gpu: 'شاشة LED رقمية مدمجة',
+                    cpu: 'وحدة إدارة طاقة ذكية BPS II',
+                    os: 'متوافق مع جميع الهواتف والسماعات والساعات'
+                }
+            },
+            {
+                id: 'prod_10',
+                sku: 'ATQ-MAGCASE',
+                name: 'باكدج حماية متكامل جراب MagSafe مضاد للصدمات + اسكرينة سيراميك 9H',
+                brand: 'العتيق شيلد',
+                category: 'cases',
+                price: 699,
+                oldPrice: 1099,
+                rating: '5.0',
+                reviewsCount: 29,
+                soldLastWeek: 54,
+                badge: 'الأكثر مبيعا',
+                badgeType: 'bestseller',
+                freeGiftType: null,
+                svgType: 'magsafe_case',
+                nanoPrompt: 'Studio product photo of clear MagSafe phone case with magnetic ring isolated on white background',
+                specs: {
+                    warranty: 'ضمان ضد الاصفرار لمدة 6 أشهر',
+                    primary: 'حلقة مغناطيسية N52 فائقة القوة متوافقة مع MagSafe',
+                    battery: 'يدعم الشحن اللاسلكي السريع دون نزع الجراب',
+                    color: 'شفاف كريستالي بحواف مدعمة',
+                    connectivity: 'حماية بارزة للكاميرا الخلفية والشاشة الأمامية',
+                    storage: 'مرفق اسكرينة زجاج مقوى 9H + عدسات حماية للكاميرا',
+                    extra: 'وسائد هوائية في الأركان الأربعة لامتصاص الصدمات',
+                    gpu: 'طلاء نانو مقاوم للبصمات والخدوش',
+                    cpu: 'خامة Bayer TPU الألمانية النقية',
+                    os: 'متوفر لجميع موديلات آيفون وسامسونج وأوبو'
+                }
+            },
+            {
+                id: 'prod_11',
+                sku: 'ATQ-JBLBOOM',
+                name: 'مكبر صوت بلوتوث محمول JBL Boombox 3 مقاوم للماء IP67 بصوت جهير فائق',
+                brand: 'JBL',
+                category: 'speakers',
+                price: 7499,
+                oldPrice: 8549,
+                rating: '5.0',
+                reviewsCount: 15,
+                soldLastWeek: 15,
+                badge: null,
+                badgeType: null,
+                freeGiftType: null,
+                svgType: 'speaker_jbl',
+                nanoPrompt: 'Studio product photo of JBL Boombox portable bluetooth speaker isolated on white background',
+                specs: {
+                    warranty: 'ضمان JBL الرسمي لمدة سنة',
+                    primary: 'صوت JBL Original Pro الضخم مع مضخم باص مدمج',
+                    battery: 'بطارية عملاقة تعمل حتى 24 ساعة متواصلة',
+                    color: 'أزرق بترولي / أسود',
+                    connectivity: 'Bluetooth 5.3 + خاصية PartyBoost لربط عدة سماعات',
+                    storage: 'مقاوم للماء والغبار بالكامل بمعيار IP67',
+                    extra: 'يعمل كباور بانك لشحن موبايلك أثناء الاستماع',
+                    gpu: 'مؤشر إضاءة LED لحالة البطارية',
+                    cpu: 'مضخم صوت ثلاثي القنوات',
+                    os: 'تطبيق JBL Portable للتحكم في الإيكولايزر'
+                }
+            },
+            {
+                id: 'prod_12',
+                sku: 'ATQ-MBNEO',
+                name: 'لاب توب ابل ماك بوك نيو ، معالج ابل A18 برو مع معالج 6 نواة 13 بوصة ، هارد 512 جيجا بايت SSD ، رام 8 جيجا بايت ، كارت شاشة معالج رسومات ابل 5 نواة ،macOS - ستريس',
+                brand: 'أبل',
+                category: 'speakers',
+                price: 51990,
+                oldPrice: 52990,
+                rating: '5.0',
+                reviewsCount: 19,
+                soldLastWeek: 8,
+                badge: 'جديد',
+                badgeType: 'new',
+                freeGiftType: null,
+                svgType: 'laptop_neo',
+                nanoPrompt: 'Studio product photo of sleek silver-gold Apple MacBook laptop isolated on clean background',
+                specs: {
+                    warranty: 'ضمان أبل المعتمد لمدة سنة كاملة',
+                    primary: 'شاشة Liquid Retina مقاس 13 بوصة فائقة الوضوح',
+                    battery: 'بطارية تدوم حتى 18 ساعة مع شاحن MagSafe 3',
+                    color: 'ستريس (ذهبي ليموني فاتح)',
+                    connectivity: 'منفذين Thunderbolt / USB 4 + مدخل سماعة 3.5 ملم',
+                    storage: 'هارد 512 جيجا بايت SSD + رام 8 جيجا بايت',
+                    extra: 'تصميم فائق النحافة بدون مروحة لتشغيل صامت تماماً',
+                    gpu: 'معالج رسومات ابل 5 نواة',
+                    cpu: 'ابل A18 برو مع معالج 6 نواة',
+                    os: 'macOS'
+                }
+            }
+        ];
+
+        const promoBoxesData = {
+            rightBox: [
+                { title: 'سماعات رأس احترافية', startPrice: '1,299', filter: 'headphones', svgType: 'headphone_pro' },
+                { title: 'لابتوب وتابلت', startPrice: '26,999', filter: 'speakers', svgType: 'laptop_neo' },
+                { title: 'شواحن وباور بانك', startPrice: '699', filter: 'chargers', svgType: 'charger_anker' },
+                { title: 'شنط وجرابات حماية', startPrice: '499', filter: 'cases', svgType: 'backpack_tech' }
+            ],
+            leftBox: [
+                { title: 'موبايلات ذكية', startPrice: '4,999', filter: 'phones', svgType: 'phone_iphone_orange' },
+                { title: 'أيربودز لاسلكية', startPrice: '999', filter: 'earbuds', svgType: 'tws_buds' },
+                { title: 'ساعات ذكية', startPrice: '749', filter: 'watches', svgType: 'smartwatch_orange' },
+                { title: 'مكبرات صوت JBL', startPrice: '5,199', filter: 'speakers', svgType: 'speaker_jbl' }
+            ]
+        };
+
+        // ============================================================================
+        // 4. APPLICATION STATE & RENDERING FUNCTIONS
+        // ============================================================================
+        let currentCategoryFilter = 'all';
+        let currentSearchQuery = '';
+        let wishlistOnlyMode = false;
+        const wishlistIds = new Set(['prod_1', 'prod_4']);
+        let cart = [
+            { productId: 'prod_1', qty: 1 }
+        ];
+        let activeDetailProduct = null;
+        let currentHeroSlideIndex = 0;
+
+        const heroSlidesData = [
+            { topText: 'بسعر الكاش', mainHeading: 'قسط على 12 شهر', rightImgType: 'headphone_pro', leftImgType: 'phone_iphone_orange' },
+            { topText: 'عروض الصوتيات', mainHeading: 'خصم حتى 35% على السماعات', rightImgType: 'tws_buds', leftImgType: 'speaker_jbl' },
+            { topText: 'أحدث الموبايلات', mainHeading: 'هدية فورية مع كل موبايل', rightImgType: 'phone_blue', leftImgType: 'smartwatch_orange' }
+        ];
+
+        function hydrateAllSelfGeneratedStudioImages() {
+            const heroRight = document.getElementById('heroFloatingRightImg');
+            const heroLeft = document.getElementById('heroFloatingLeftImg');
+            if (heroRight) heroRight.src = generateNanoStudioPNG('headphone_pro', 'transparent', 0);
+            if (heroLeft) heroLeft.src = generateNanoStudioPNG('phone_iphone_orange', 'transparent', 0);
+
+            iconSliderItems.forEach(item => {
+                item.imageUrl = generateNanoStudioPNG(item.svgType, 'transparent', 0);
+            });
+
+            browseCategoriesData.forEach(cat => {
+                cat.imageUrl = generateNanoStudioPNG(cat.svgType, 'transparent', 0);
+            });
+
+            productsData.forEach(prod => {
+                const angle0 = generateNanoStudioPNG(prod.svgType, 'transparent', 0);
+                const angle1 = generateNanoStudioPNG(prod.svgType, 'transparent', 1);
+                const angle2 = generateNanoStudioPNG(prod.svgType, 'transparent', 2);
+                prod.imageUrl = angle0;
+                prod.galleryImages = [angle0, angle1, angle2];
+            });
+
+            promoBoxesData.rightBox.forEach(item => {
+                item.imageUrl = generateNanoStudioPNG(item.svgType, 'transparent', 0);
+            });
+            promoBoxesData.leftBox.forEach(item => {
+                item.imageUrl = generateNanoStudioPNG(item.svgType, 'transparent', 0);
+            });
+        }
+
+        function switchHeroSlide(dir) {
+            currentHeroSlideIndex = (currentHeroSlideIndex + dir + heroSlidesData.length) % heroSlidesData.length;
+            const slide = heroSlidesData[currentHeroSlideIndex];
+            document.getElementById('heroTopBadgeText').textContent = slide.topText;
+            document.getElementById('heroMainHeading').textContent = slide.mainHeading;
+            document.getElementById('heroFloatingRightImg').src = generateNanoStudioPNG(slide.rightImgType, 'transparent', 0);
+            document.getElementById('heroFloatingLeftImg').src = generateNanoStudioPNG(slide.leftImgType, 'transparent', 0);
+        }
+
+        function renderIconSlider() {
+            const container = document.getElementById('iconSliderContainer');
+            if (!container) return;
+            container.innerHTML = iconSliderItems.map(item => `
+                <div onclick="showHomeView(); filterByCategory('${item.cat}')" class="flex flex-col items-center min-w-[92px] sm:min-w-[110px] cursor-pointer group">
+                    <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white flex items-center justify-center p-2 group-hover:-translate-y-1 transition duration-200">
+                        <img src="${item.imageUrl}" alt="${item.title}" class="w-full h-full object-contain rounded-xl">
+                    </div>
+                    <span class="text-xs sm:text-sm font-bold text-neutral-800 group-hover:text-[#f06424] mt-2 text-center whitespace-nowrap">${item.title}</span>
+                </div>
+            `).join('');
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            if (!grid) return;
+
+            const filtered = productsData.filter(p => {
+                const matchesCat = currentCategoryFilter === 'all' || p.category === currentCategoryFilter;
+                const matchesSearch = !currentSearchQuery ||
+                    p.name.toLowerCase().includes(currentSearchQuery.toLowerCase()) ||
+                    p.brand.toLowerCase().includes(currentSearchQuery.toLowerCase());
+                const matchesWish = !wishlistOnlyMode || wishlistIds.has(p.id);
+                return matchesCat && matchesSearch && matchesWish;
+            });
+
+            document.getElementById('productCountChip').textContent = `${filtered.length} منتج`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center bg-gray-50 rounded-2xl border border-gray-200">
+                        <i class="fa-solid fa-box-open text-3xl text-neutral-400 mb-2"></i>
+                        <p class="font-bold text-neutral-700 text-sm">لا توجد منتجات مطابقة للبحث الحالي</p>
+                        <button onclick="filterByCategory('all')" class="mt-3 px-4 py-2 bg-[#f06424] text-white text-xs font-bold rounded-lg">عرض كل المنتجات</button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(prod => {
+                const isWished = wishlistIds.has(prod.id);
+                let topBadgeHTML = '<div></div>';
+                if (prod.badgeType === 'new') {
+                    topBadgeHTML = `<span class="bg-[#eef2ff] text-[#3b5bdb] text-[11px] font-bold px-2.5 py-0.5 rounded">${prod.badge}</span>`;
+                } else if (prod.badgeType === 'bestseller') {
+                    topBadgeHTML = `<span class="bg-[#e6fcf5] text-[#0ca678] text-[11px] font-bold px-2.5 py-0.5 rounded">${prod.badge}</span>`;
+                }
+
+                let freeGiftOverlayHTML = '';
+                if (prod.freeGiftType) {
+                    freeGiftOverlayHTML = `
+                        <div class="absolute bottom-1 left-1 bg-white border-2 border-red-600 rounded-md px-1.5 py-0.5 shadow-sm flex items-center gap-1">
+                            <span class="bg-red-600 text-white text-[9px] font-black px-1 rounded-xs">FREE</span>
+                            <span class="text-[10px] font-bold text-neutral-800">هدية مجانية</span>
+                        </div>
+                    `;
+                }
+
+                return `
+                <div class="bg-white border border-gray-200 hover:border-[#f06424] rounded-xl p-3 flex flex-col justify-between transition shadow-xs hover:shadow-md group">
+                    <div>
+                        <!-- Top Row: Badge on Right + Orange Heart on Left (Exact match to image2.jpg) -->
+                        <div class="flex items-center justify-between mb-2 min-h-[24px]">
+                            ${topBadgeHTML}
+                            <button onclick="event.stopPropagation(); toggleWishlist('${prod.id}')" class="text-[#f06424] hover:scale-110 transition">
+                                <i class="${isWished ? 'fa-solid' : 'fa-regular'} fa-heart text-base"></i>
+                            </button>
+                        </div>
+
+                        <!-- Product Studio Image Container -->
+                        <div onclick="openProductDetail('${prod.id}')" id="img_box_${prod.id}" class="relative w-full h-44 sm:h-48 flex items-center justify-center my-1 p-2 overflow-hidden rounded-lg bg-white cursor-pointer">
+                            <img id="img_${prod.id}" src="${prod.imageUrl}" alt="${prod.name}" class="w-full h-full object-contain group-hover:scale-105 transition duration-300">
+                            ${freeGiftOverlayHTML}
+                        </div>
+                    </div>
+
+                    <!-- Bottom Details: Rating, 2-line Title, Blue Sold Last Week, Price & Orange Square Cart Button -->
+                    <div class="mt-2 pt-2 border-t border-gray-100">
+                        <!-- Rating Row -->
+                        <div class="flex items-center justify-end gap-1 text-[11px] text-neutral-600 font-bold mb-1">
+                            <span>(${prod.reviewsCount})</span>
+                            <span>${prod.rating}</span>
+                            <i class="fa-solid fa-star text-neutral-900 text-[10px]"></i>
+                        </div>
+
+                        <!-- 2-Line Product Title -->
+                        <h3 onclick="openProductDetail('${prod.id}')" class="text-xs sm:text-[13px] font-bold text-neutral-800 hover:text-[#f06424] line-clamp-2 leading-relaxed cursor-pointer min-h-[38px]">
+                            ${prod.name}
+                        </h3>
+
+                        <!-- Sold Last Week Blue Stats Row -->
+                        <div class="flex items-center gap-1.5 text-[11px] text-[#1971c2] font-bold mt-1.5 mb-2">
+                            <i class="fa-solid fa-tag text-[10px]"></i>
+                            <span>تم بيع ${prod.soldLastWeek} في الاسبوع الماضي</span>
+                        </div>
+
+                        <!-- Price + Square Orange Add-to-Cart Button Row -->
+                        <div class="flex items-center justify-between gap-2 mt-1">
+                            <div class="text-right">
+                                <div class="text-sm sm:text-base font-black text-neutral-900 leading-tight">
+                                    ${prod.price.toLocaleString('en-US')} <span class="text-xs font-bold">ج.م</span>
+                                </div>
+                                <div class="text-[11px] text-neutral-400 line-through font-semibold">
+                                    ${prod.oldPrice.toLocaleString('en-US')} ج.م
+                                </div>
+                            </div>
+
+                            <button onclick="event.stopPropagation(); addToCart('${prod.id}')" class="w-9 h-9 rounded-lg bg-[#f06424] hover:bg-[#d95316] text-white flex items-center justify-center shadow-xs transition shrink-0" title="أضف للسلة">
+                                <i class="fa-solid fa-bag-shopping text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function renderBrowseCategories() {
+            const grid = document.getElementById('browseCategoriesGrid');
+            if (!grid) return;
+
+            grid.innerHTML = browseCategoriesData.map(cat => {
+                if (cat.isTechCare) {
+                    return `
+                        <div onclick="showToast('خدمة TECH CARE توفر ضمان استبدال وصيانة فورية لجميع أجهزة العتيق')" class="bg-[#f8f6f4] hover:bg-[#f1ede8] rounded-xl p-4 h-40 flex flex-col justify-between cursor-pointer transition border border-transparent hover:border-orange-200">
+                            <h3 class="text-xs sm:text-sm font-bold text-neutral-900 text-right">${cat.title}</h3>
+                            <div class="flex items-center justify-end gap-2 py-4">
+                                <span class="font-black text-base tracking-tight text-neutral-900">TECH CARE</span>
+                                <span class="w-7 h-7 rounded-full border-2 border-[#f06424] text-[#f06424] flex items-center justify-center font-black text-xs">T</span>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div onclick="filterByCategory('${cat.filter}'); document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})" class="bg-[#f8f6f4] hover:bg-[#f1ede8] rounded-xl p-4 h-40 flex flex-col justify-between cursor-pointer transition border border-transparent hover:border-orange-200 group overflow-hidden relative">
+                        <h3 class="text-xs sm:text-sm font-bold text-neutral-900 text-right z-10">${cat.title}</h3>
+                        <div class="w-24 h-24 self-end flex items-center justify-center group-hover:scale-105 transition duration-300">
+                            <img src="${cat.imageUrl}" alt="${cat.title}" class="w-full h-full object-contain rounded-lg">
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderDualPromoBoxes() {
+            const renderCard = (item) => `
+                <div onclick="filterByCategory('${item.filter}'); document.getElementById('productsSection').scrollIntoView({behavior:'smooth'})" class="bg-[#f5f5f5] hover:bg-[#efefef] rounded-xl p-4 flex flex-col justify-between cursor-pointer transition group">
+                    <div class="w-full h-36 flex items-center justify-center p-2 mb-2">
+                        <img src="${item.imageUrl}" alt="${item.title}" class="max-h-full max-w-full object-contain rounded-lg group-hover:scale-105 transition">
+                    </div>
+                    <div class="text-right">
+                        <h4 class="font-black text-sm sm:text-base text-neutral-900">${item.title}</h4>
+                        <p class="text-xs text-neutral-600 font-semibold mt-0.5">السعر من <span class="font-black text-neutral-900">${item.startPrice}</span> ج.م</p>
+                        <span class="inline-block text-xs font-bold text-[#f06424] underline mt-1.5">تسوق الآن</span>
+                    </div>
+                </div>
+            `;
+
+            const rightGrid = document.getElementById('promoBoxRightGrid');
+            const leftGrid = document.getElementById('promoBoxLeftGrid');
+            if (rightGrid) rightGrid.innerHTML = promoBoxesData.rightBox.map(renderCard).join('');
+            if (leftGrid) leftGrid.innerHTML = promoBoxesData.leftBox.map(renderCard).join('');
+        }
+
+        // ============================================================================
+        // 5. FILTERING, PRODUCT DETAILS VIEW & SHOPPING CART LOGIC
+        // ============================================================================
+        const categoryArabicNames = {
+            all: 'أحدث العروض والمنتجات الأكثر مبيعاً',
+            phones: 'قسم الموبايلات والهواتف الذكية',
+            headphones: 'سماعات الرأس الاحترافية وعزل الضوضاء',
+            earbuds: 'سماعات الأيربودز والبلوتوث اللاسلكية',
+            chargers: 'الشواحن السريعة والباور بانك والكابلات',
+            cases: 'جرابات الموبايل واسكرينات الحماية',
+            watches: 'الساعات الذكية والأساور الرياضية',
+            speakers: 'مكبرات الصوت المحمولة واللابتوب'
+        };
+
+        function filterByCategory(cat) {
+            currentCategoryFilter = cat;
+            wishlistOnlyMode = false;
+            document.getElementById('currentCategoryTitle').textContent = categoryArabicNames[cat] || categoryArabicNames.all;
+
+            document.querySelectorAll('.cat-pill').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.className = 'cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#f06424] text-white transition';
+                } else {
+                    btn.className = 'cat-pill px-3.5 py-1.5 rounded-full text-xs font-bold bg-gray-100 hover:bg-gray-200 text-neutral-700 transition';
+                }
+            });
+
+            renderProducts();
+        }
+
+        function handleSearch(query) {
+            currentSearchQuery = query.trim();
+            showHomeView();
+            renderProducts();
+        }
+
+        function toggleWishlist(prodId) {
+            if (wishlistIds.has(prodId)) {
+                wishlistIds.delete(prodId);
+                showToast('تمت إزالة المنتج من المفضلة');
+            } else {
+                wishlistIds.add(prodId);
+                showToast('تمت إضافة المنتج إلى المفضلة بنجاح');
+            }
+            document.getElementById('wishlistCountBadge').textContent = wishlistIds.size;
+            renderProducts();
+        }
+
+        function toggleWishlistFilter() {
+            showHomeView();
+            wishlistOnlyMode = !wishlistOnlyMode;
+            document.getElementById('currentCategoryTitle').textContent = wishlistOnlyMode
+                ? 'منتجاتك المفضلة في العتيق'
+                : (categoryArabicNames[currentCategoryFilter] || categoryArabicNames.all);
+            renderProducts();
+        }
+
+        function openProductDetail(prodId) {
+            const prod = productsData.find(p => p.id === prodId);
+            if (!prod) return;
+            activeDetailProduct = prod;
+
+            document.getElementById('homeView').classList.add('hidden');
+            document.getElementById('productDetailView').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Breadcrumb
+            const catLabel = categoryArabicNames[prod.category] || 'الإلكترونيات';
+            document.getElementById('detailBreadcrumb').innerHTML = `
+                <span onclick="showHomeView()" class="cursor-pointer hover:text-[#f06424]">الرئيسية</span>
+                <span>‹</span>
+                <span onclick="showHomeView(); filterByCategory('${prod.category}')" class="cursor-pointer hover:text-[#f06424]">${catLabel}</span>
+                <span>‹</span>
+                <span class="text-neutral-900 font-bold">${prod.name}</span>
+            `;
+
+            // Layout 6.jpg fields
+            const savings = Math.max(0, prod.oldPrice - prod.price);
+            document.getElementById('detailSaveBadge').textContent = `هتوفر ${savings.toLocaleString('en-US')} ج.م`;
+            document.getElementById('detailMainImage').src = prod.imageUrl;
+            document.getElementById('detailTitle6').textContent = prod.name;
+            document.getElementById('detailPrice6').textContent = `${prod.price.toLocaleString('en-US')} ج.م`;
+            document.getElementById('detailOldPrice6').textContent = `${prod.oldPrice.toLocaleString('en-US')} ج.م`;
+
+            const monthly = (prod.price / 12).toFixed(2);
+            document.getElementById('detailMonthlyInstallment').textContent = Number(monthly).toLocaleString('en-US');
+
+            // Render 3 vertical thumbnails
+            const gallery = prod.galleryImages || [prod.imageUrl];
+            document.getElementById('detailThumbnailsList').innerHTML = gallery.map((imgSrc, idx) => `
+                <button onclick="selectDetailThumbnail(${idx})" id="thumb_btn_${idx}" class="w-16 h-16 rounded-xl bg-[#f6f3f0] p-1.5 border-2 ${idx === 0 ? 'border-neutral-900' : 'border-transparent'} hover:border-neutral-700 transition flex items-center justify-center">
+                    <img src="${imgSrc}" alt="زاوية ${idx + 1}" class="w-full h-full object-contain rounded-lg">
+                </button>
+            `).join('');
+
+            // Quick specs rows (6.jpg style)
+            document.getElementById('detailQuickSpecs6').innerHTML = `
+                <div class="py-3 flex items-center justify-between">
+                    <span class="text-neutral-500 flex items-center gap-2"><i class="fa-solid fa-microchip text-neutral-400"></i> كارت الشاشة / الصوت</span>
+                    <span class="font-bold text-neutral-900">${prod.specs.gpu}</span>
+                </div>
+                <div class="py-3 flex items-center justify-between">
+                    <span class="text-neutral-500 flex items-center gap-2"><i class="fa-solid fa-memory text-neutral-400"></i> نوع المعالج</span>
+                    <span class="font-bold text-neutral-900">${prod.specs.cpu}</span>
+                </div>
+                <div class="py-3 flex items-center justify-between">
+                    <span class="text-neutral-500 flex items-center gap-2"><i class="fa-solid fa-layer-group text-neutral-400"></i> نظام التشغيل</span>
+                    <span class="font-bold text-neutral-900">${prod.specs.os}</span>
+                </div>
+            `;
+
+            document.getElementById('detailAddToCartBtn6').onclick = () => addToCart(prod.id);
+            document.getElementById('detailWishlistBtn').onclick = () => toggleWishlist(prod.id);
+
+            // Layout 5.png fields
+            document.getElementById('specBrandName').textContent = prod.brand;
+            document.getElementById('specProductTitle').textContent = prod.name;
+            document.getElementById('specSku').textContent = prod.sku;
+            document.getElementById('specWarranty').textContent = prod.specs.warranty;
+            document.getElementById('specPrimary').textContent = prod.specs.primary;
+            document.getElementById('specBattery').textContent = prod.specs.battery;
+            document.getElementById('specColor').textContent = prod.specs.color;
+            document.getElementById('specConnectivity').textContent = prod.specs.connectivity;
+            document.getElementById('specStorage').textContent = prod.specs.storage;
+            document.getElementById('specExtra').textContent = prod.specs.extra;
+            document.getElementById('specSaveAmount').textContent = `وفر ${savings.toLocaleString('en-US')} ج.م`;
+            document.getElementById('specOldPrice').textContent = `${prod.oldPrice.toLocaleString('en-US')} ج.م`;
+            document.getElementById('specCurrentPrice').textContent = `${prod.price.toLocaleString('en-US')} ج.م`;
+
+            const discountPct = Math.round((savings / prod.oldPrice) * 100);
+            document.getElementById('specDiscountBadge').textContent = `${discountPct}% تخفيض`;
+            document.getElementById('specSideImage').src = prod.imageUrl;
+            document.getElementById('detailAddToCartBtn5').onclick = () => addToCart(prod.id);
+        }
+
+        function selectDetailThumbnail(idx) {
+            if (!activeDetailProduct || !activeDetailProduct.galleryImages) return;
+            const chosenSrc = activeDetailProduct.galleryImages[idx];
+            document.getElementById('detailMainImage').src = chosenSrc;
+            activeDetailProduct.galleryImages.forEach((_, i) => {
+                const btn = document.getElementById(`thumb_btn_${i}`);
+                if (btn) {
+                    btn.className = `w-16 h-16 rounded-xl bg-[#f6f3f0] p-1.5 border-2 ${i === idx ? 'border-neutral-900' : 'border-transparent'} hover:border-neutral-700 transition flex items-center justify-center`;
+                }
+            });
+        }
+
+        function setDetailLayoutMode(mode) {
+            const section6 = document.getElementById('detailModeInstallment');
+            const section5 = document.getElementById('detailModeSpecs');
+            const btn6 = document.getElementById('btnLayout6');
+            const btn5 = document.getElementById('btnLayout5');
+
+            if (mode === 'installment') {
+                section6.classList.remove('hidden');
+                section5.scrollIntoView({ behavior: 'smooth' });
+                btn6.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-[#f06424] text-white transition';
+                btn5.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-gray-100 text-neutral-700 hover:bg-gray-200 transition';
+            } else {
+                section5.scrollIntoView({ behavior: 'smooth' });
+                btn5.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-[#f06424] text-white transition';
+                btn6.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-gray-100 text-neutral-700 hover:bg-gray-200 transition';
+            }
+        }
+
+        function showHomeView() {
+            document.getElementById('productDetailView').classList.add('hidden');
+            document.getElementById('homeView').classList.remove('hidden');
+        }
+
+        function zoomProductImage() {
+            if (!activeDetailProduct) return;
+            document.getElementById('zoomedModalImg').src = document.getElementById('detailMainImage').src;
+            const modal = document.getElementById('imageZoomModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeZoomModal() {
+            const modal = document.getElementById('imageZoomModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function addToCart(prodId) {
+            const existing = cart.find(item => item.productId === prodId);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ productId: prodId, qty: 1 });
+            }
+            updateCartUI();
+            const prod = productsData.find(p => p.id === prodId);
+            showToast(`تمت إضافة "${prod ? prod.name.slice(0, 28) + '...' : 'المنتج'}" إلى السلة`);
+        }
+
+        function changeCartQty(prodId, delta) {
+            const idx = cart.findIndex(item => item.productId === prodId);
+            if (idx === -1) return;
+            cart[idx].qty += delta;
+            if (cart[idx].qty <= 0) {
+                cart.splice(idx, 1);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartCountBadge').textContent = totalItems;
+            document.getElementById('drawerCartCount').textContent = totalItems;
+
+            const container = document.getElementById('cartItemsContainer');
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-neutral-400">
+                        <i class="fa-solid fa-cart-shopping text-4xl mb-3"></i>
+                        <p class="font-bold text-sm text-neutral-600">سلة التسوق فارغة حالياً</p>
+                    </div>
+                `;
+                document.getElementById('cartTotalPrice').textContent = '0 ج.م';
+                return;
+            }
+
+            let totalCost = 0;
+            container.innerHTML = cart.map(item => {
+                const prod = productsData.find(p => p.id === item.productId);
+                if (!prod) return '';
+                const lineTotal = prod.price * item.qty;
+                totalCost += lineTotal;
+                return `
+                    <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-gray-200">
+                        <img src="${prod.imageUrl}" alt="${prod.name}" class="w-16 h-16 object-contain rounded-lg bg-gray-50 p-1">
+                        <div class="flex-1 text-right">
+                            <h4 class="text-xs font-bold text-neutral-800 line-clamp-1">${prod.name}</h4>
+                            <p class="text-xs font-black text-[#f06424] mt-1">${lineTotal.toLocaleString('en-US')} ج.م</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <button onclick="changeCartQty('${prod.id}', -1)" class="w-6 h-6 rounded bg-gray-100 hover:bg-gray-200 text-xs font-bold">-</button>
+                                <span class="text-xs font-bold">${item.qty}</span>
+                                <button onclick="changeCartQty('${prod.id}', 1)" class="w-6 h-6 rounded bg-gray-100 hover:bg-gray-200 text-xs font-bold">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('cartTotalPrice').textContent = `${totalCost.toLocaleString('en-US')} ج.م`;
+        }
+
+        function toggleCartDrawer(open) {
+            const drawer = document.getElementById('cartDrawer');
+            const backdrop = document.getElementById('cartDrawerBackdrop');
+            if (open) {
+                backdrop.classList.remove('hidden');
+                drawer.classList.remove('-translate-x-full');
+            } else {
+                backdrop.classList.add('hidden');
+                drawer.classList.add('-translate-x-full');
+            }
+        }
+
+        function completeCheckout() {
+            if (cart.length === 0) {
+                showToast('السلة فارغة، أضف منتجات أولاً!');
+                return;
+            }
+            cart = [];
+            updateCartUI();
+            toggleCartDrawer(false);
+            showToast('تم استلام طلبك بنجاح! سيتواصل معك فريق العتيق لتأكيد التوصيل.');
+        }
+
+        function showToast(msg) {
+            const box = document.getElementById('toastBox');
+            document.getElementById('toastMessage').textContent = msg;
+            box.classList.remove('hidden');
+            clearTimeout(window._toastTimer);
+            window._toastTimer = setTimeout(() => {
+                box.classList.add('hidden');
+            }, 3200);
+        }
+
+        // ============================================================================
+        // 6. BACKGROUND NANO BANANA IMAGE ENHANCEMENT ON LOAD
+        // ============================================================================
+        async function autoEnhanceHomepageWithNanoBanana() {
+            for (const prod of productsData) {
+                try {
+                    const aiImg = await callNanoBananaImageAPI(prod.nanoPrompt, "1:1", prod.id, false);
+                    if (aiImg) {
+                        prod.imageUrl = aiImg;
+                        if (prod.galleryImages && prod.galleryImages.length > 0) {
+                            prod.galleryImages[0] = aiImg;
+                        }
+                        generatedStudioCache[`${prod.svgType}_0`] = aiImg;
+                        const domImg = document.getElementById(`img_${prod.id}`);
+                        if (domImg) domImg.src = aiImg;
+                    }
+                } catch (e) {
+                    // Keeps studio photographic asset active
+                }
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            hydrateAllSelfGeneratedStudioImages();
+            renderIconSlider();
+            renderProducts();
+            renderBrowseCategories();
+            renderDualPromoBoxes();
+            updateCartUI();
+            document.getElementById('wishlistCountBadge').textContent = wishlistIds.size;
+            autoEnhanceHomepageWithNanoBanana();
+        });
+    </script>
+</body>
+</html>
